@@ -1,0 +1,505 @@
+/*-----------------------------*
+ * アニメーション実行時
+ *-----------------------------*/
+.js-isActive {
+  &.an_fadeIn,
+  .an_fadeIn {
+    animation-name: fadeIn;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+  }
+  &.an_fadeOut,
+  .an_fadeOut {
+    animation-name: fadeOut;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+  }
+  &.an_fadeUp,
+  .an_fadeUp {
+    animation-name: fadeUp;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+  &.an_expandLeftToRight,
+  .an_expandLeftToRight {
+    animation-name: expandLeftToRight;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+  }
+  &.an_fadeInLeft,
+  .an_fadeInLeft {
+    animation-name: fadeInLeft;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+  &.an_fadeInLeftSmall,
+  .an_fadeInLeftSmall {
+    animation-name: fadeInLeftSmall;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+  &.an_fadeInRight,
+  .an_fadeInRight {
+    animation-name: fadeInRight;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+  &.an_fadeInRightSmall,
+  .an_fadeInRightSmall {
+    animation-name: fadeInRightSmall;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+  &.an_maskInLeft,
+  .an_maskInLeft {
+    animation-name: maskInLeft;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+  &.an_maskInRight,
+  .an_maskInRight {
+    animation-name: maskInRight;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+  &.an_maskInLeft_sequential,
+  .an_maskInLeft_sequential {
+    animation-name: maskInLeft;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+  &.an_maskInRight_sequential,
+  .an_maskInRight_sequential {
+    animation-name: maskInRight;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+
+  &.an_gradBlue,
+  .an_gradBlue {
+    animation-name: gradBlue;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+
+  &.an_gradRed,
+  .an_gradRed {
+    animation-name: gradRed;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+
+  &.an_fadeInLeftToRight,
+  .an_fadeInLeftToRight {
+    animation-name: fadeInLeftToRight;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+    max-width: 0px;
+    overflow: hidden;
+  }
+
+  &.an_grayToColor,
+  .an_grayToColor {
+    animation-name: grayToColor;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+  }
+}
+
+/*-----------------------------*
+ * ループでの色チェンジクラス
+ *-----------------------------*/
+$animate_blue: rgba(
+  $color: #a8b9b7,
+  $alpha: 68%,
+);
+$animate_green: rgba(
+  $color: #8ab58a,
+  $alpha: 68%,
+);
+$animate_red: rgba(
+  $color: #b5b5b5,
+  $alpha: 68%,
+);
+$animate_orange: rgba(
+  $color: #b29f94,
+  $alpha: 68%,
+);
+
+@keyframes blueToGreen {
+  from {
+    color: $animate_blue;
+  }
+  to {
+    color: $animate_green;
+  }
+}
+@keyframes greenToOrange {
+  from {
+    color: $animate_green;
+  }
+  to {
+    color: $animate_orange;
+  }
+}
+@keyframes orangeToRed {
+  from {
+    color: $animate_orange;
+  }
+  to {
+    color: $animate_red;
+  }
+}
+@keyframes redToBlue {
+  from {
+    color: $animate_red;
+  }
+  to {
+    color: $animate_blue;
+  }
+}
+
+.loopColorChange {
+  animation-duration: 0.3s;
+  color: $animate_blue;
+}
+.an_blueToGreen {
+  animation-name: blueToGreen;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+}
+.an_greenToOrange {
+  animation-name: greenToOrange;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+}
+.an_orangeToRed {
+  animation-name: orangeToRed;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+}
+.an_redToBlue {
+  animation-name: redToBlue;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+}
+
+/*-----------------------------*
+ * デフォルトのスタイル(アニメーションの0の時)
+ *-----------------------------*/
+.an_fadeIn {
+  opacity: 0;
+}
+.an_fadeOut {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+}
+.an_fadeUp {
+  opacity: 0;
+  transform: translate3d(-40%, 0, 0);
+}
+.an_expandLeftToRight {
+  opacity: 0;
+  transform: translate3d(-10%, 0, 0);
+}
+.an_fadeInLeft {
+  opacity: 0;
+  transform: translate3d(40%, 0, 0);
+}
+.an_fadeInLeftSmall {
+  opacity: 0;
+  transform: translate3d(10%, 0, 0);
+}
+.an_fadeInRight {
+  opacity: 0;
+  transform: translate3d(-40%, calc(-100% + 18.14vh), 0);
+}
+.an_fadeInRightSmall {
+  opacity: 0;
+  transform: translate3d(40%, calc(-100% + 18.14vh), 0);
+}
+.an_maskInLeft {
+  transform: translateX(-100%);
+}
+.an_maskInRight {
+  transform: translateX(100%);
+}
+
+@for $i from 0 through 160 {
+  .an_delay_#{$i*10} {
+    animation-delay: $i * 0.1s;
+  }
+  .tr_delay_#{$i*10} {
+    transition-delay: $i * 0.1s;
+  }
+  .an_dur_#{$i*10} {
+    animation-duration: $i * 0.1s;
+  }
+  .tr_dur_#{$i*10} {
+    transition-duration: $i * 0.1s;
+  }
+}
+@for $i from 0 through 160 {
+  @include mq(md) {
+    .an_delay_#{$i*10}_pc {
+      animation-delay: $i * 0.1s;
+    }
+    .tr_delay_#{$i*10}_pc {
+      transition-delay: $i * 0.1s;
+    }
+    .an_dur_#{$i*10}_pc {
+      animation-duration: $i * 0.1s;
+    }
+    .tr_dur_#{$i*10}_pc {
+      transition-duration: $i * 0.1s;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-40%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fadeInLeftSmall {
+  from {
+    opacity: 0;
+    transform: translate3d(-10%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(40%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInRightSmall {
+  from {
+    opacity: 0;
+    transform: translate3d(10%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInLeftInterview {
+  from {
+    opacity: 0;
+    transform: translate3d(-40%, calc(-100% + 18.14vh), 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, calc(-100% + 18.14vh), 0);
+  }
+}
+
+@keyframes fadeInRightInterview {
+  from {
+    opacity: 0;
+    transform: translate3d(40%, calc(-100% + 18.14vh), 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, calc(-100% + 18.14vh), 0);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+  }
+
+  51% {
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes colorTrans {
+  0% {
+    color: transparent;
+  }
+  100% {
+    color: $col_black;
+  }
+}
+
+@keyframes maskInLeft {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes maskInRight {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes expandLeftToRight {
+  0% {
+    transform: scale3d(0, 1, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 13em;
+  }
+}
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: transparent;
+  }
+  to {
+    border-right-color: $col_white;
+  }
+}
+
+@keyframes tranUp {
+  0% {
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes imgTranLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-200px, 0, 0);
+  }
+}
+
+@keyframes imgTranLeftPC {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-400px, 0, 0);
+  }
+}
+
+@keyframes imgTranRight {
+  0% {
+    transform: translate3d(200px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0x, 0, 0);
+  }
+}
+
+@keyframes imgTranLeftEpi {
+  0% {
+    transform: translate3d(-250px, 0, 0);
+  }
+  100% {
+    transform: translate3d(-600px, 0, 0);
+  }
+}
+
+@keyframes zoomInLeft {
+  0% {
+    transform: translate(-50%, 20%) scale3d(0, 0, 0);
+  }
+  100% {
+    transform: translate(-50%, 0) scale3d(1, 1, 1);
+  }
+}
+
+@keyframes gradBlue {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: $col_blue;
+  }
+}
+
+@keyframes gradRed {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: #bd261a;
+  }
+}
+
+@keyframes fadeInLeftToRight {
+  0% {
+    max-width: 0%;
+  }
+  100% {
+    max-width: 100%;
+  }
+}
+
+@keyframes grayToColor {
+  0% {
+    filter: grayscale(1);
+  }
+  100% {
+    filter: grayscale(0);
+  }
+}

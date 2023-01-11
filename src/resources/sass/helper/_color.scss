@@ -1,0 +1,18 @@
+$colorClass: true !default;
+$colorBackground: true !default;
+
+@if $colorClass {
+  @each $modifier, $color in $site_colors {
+    .col_#{$modifier} {
+      color: $color;
+    }
+    .fill_#{$modifier} {
+      fill: $color;
+    }
+    @if $colorBackground {
+      .bcol_#{$modifier} {
+        background-color: $color;
+      }
+    }
+  }
+}

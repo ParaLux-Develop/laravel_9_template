@@ -1,0 +1,10 @@
+.ly_size {
+  padding-right: $page_padding_sp;
+  padding-left: $page_padding_sp;
+  @include mq(md) {
+    min-width: $page_width;
+    max-width: $page_max_width;
+    padding-right: $page_padding;
+    padding-left: $page_padding;
+  }
+}

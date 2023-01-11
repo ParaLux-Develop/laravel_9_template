@@ -1,0 +1,25 @@
+.column2 {
+  &_wrap {
+    width: 100%;
+    height: auto;
+  }
+  @include mq(md) {
+    &_wrap {
+      display: grid;
+      column-gap: $page_width - $column2_main_width - $column2_side_width -$page_padding *
+        2;
+      width: $page_width;
+      margin: 0 auto;
+      padding: 0 $page_padding;
+      grid-template-columns: $column2_main_width $column2_side_width;
+    }
+    &_main {
+      width: $column2_main_width;
+      height: auto;
+    }
+    &_side {
+      width: $column2_side_width;
+      height: auto;
+    }
+  }
+}

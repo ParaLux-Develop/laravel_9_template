@@ -1,0 +1,95 @@
+body {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 1.8;
+  letter-spacing: 0.025em;
+  font-family: $main_font;
+  width: 100%;
+  color: $col_black;
+  word-break: break-word;
+}
+
+p { 
+  line-height: 1.8;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  display: block;
+  font-size: inherit;
+  margin: 0;
+  font-weight: 400;
+}
+
+ul {
+  list-style-type: none;
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+dl {
+  dt {
+    font-weight: 400;
+  }
+  dd {
+    margin-bottom: 0;
+  }
+}
+
+img {
+  font-family: "object-fit: cover; object-position: center;";
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+input,
+button,
+select,
+textarea {
+  color: inherit;
+  background-color: transparent;
+  &:focus {
+    outline: 0;
+  }
+}
+input[type="date"] {
+  min-height: 34px;
+}
+label {
+  margin: 0;
+}
+
+button {
+  display: inline-block;
+  color: $col_black;
+  border-radius: 5px;
+  background-color: $col_white;
+  appearance: none;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+  transition: 0.3s;
+}
+svg {
+  transition: 0.3s;
+}
+header {
+  text-align: center;
+}

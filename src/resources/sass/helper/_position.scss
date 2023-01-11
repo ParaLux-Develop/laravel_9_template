@@ -1,0 +1,43 @@
+.p_sta {
+  position: static;
+}
+.p_rel {
+  position: relative;
+}
+.p_abs {
+  position: absolute;
+}
+
+@mixin p_abs($content: "") {
+  position: absolute;
+  content: $content;
+}
+@mixin p_abs_sp($content: "") {
+  position: absolute;
+  content: $content;
+  @include mq(md) {
+    position: static;
+  }
+}
+@mixin p_abs_pc($content: "") {
+  @include mq(md) {
+    position: absolute;
+    content: $content;
+  }
+}
+
+@mixin p_x_center() {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin p_y_center() {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin p_xy_center() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

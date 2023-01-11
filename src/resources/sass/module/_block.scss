@@ -1,0 +1,500 @@
+@charset "UTF-8";
+/*
+Theme Name: paralux_sass
+Author: paralux
+Version: 1.0
+Text Domain: paralux module-block
+*/
+
+/*----------------------------------------------------------------------------------------------------
+## module_block_flag
+----------------------------------------------------------------------------------------------------*/
+$mediaClass: false !default;
+$cardClass: false !default;
+$tableClass: false !default;
+$faqClass: false !default;
+$accordionClass: false !default;
+$breadcrumpClass: false !default;
+$step_contentsClass: false !default;
+$dl_tableClass: false !default;
+$pagination: false !default;
+
+/*----------------------------------------------------------------------------------------------------
+## media
+----------------------------------------------------------------------------------------------------*/
+@mixin media($img_width, $space) {
+  display: block;
+  &_imgWrapper {
+    margin-bottom: 20px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &_body {
+    flex: 1;
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &_ttl {
+    margin-bottom: 10px;
+  }
+  &_txt {
+    word-break: break-all;
+  }
+  @include mq(md) {
+    display: flex;
+    align-items: center;
+    &_imgWrapper {
+      flex: 0 1 $img_width;
+      margin-right: $space;
+      margin-bottom: 0;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  &.fl_dir_rowRev {
+    @include mq(md) {
+      .bl_media_imgWrapper {
+        margin-right: 0;
+      }
+      .bl_media_body {
+        margin-right: $space;
+        text-align: right;
+      }
+    }
+  }
+}
+
+@if $mediaClass {
+  .bl_media {
+    @include media(27.58%, 3.33%);
+  }
+
+  .bl_media_bg {
+    @include media(48.33%, 3.33%);
+  }
+}
+
+/*----------------------------------------------------------------------------------------------------
+## card
+----------------------------------------------------------------------------------------------------*/
+
+@mixin card($img_height) {
+  box-shadow: 0 3px 6px #0000001e;
+  &_img {
+    width: 100%;
+    height: $img_height;
+  }
+  &_body {
+    padding: 15px;
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &_ttl {
+    margin-bottom: 10px;
+  }
+  &_txt {
+    word-break: break-all;
+  }
+
+  &_badge {
+    position: relative;
+    &::after {
+      @include p_abs();
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border: 55px solid transparent {
+        top: {
+          color: #e25c00;
+        }
+        bottom: 0;
+        left: 0;
+      }
+    }
+    &_txt {
+      position: absolute;
+      z-index: 2;
+      top: 6px;
+      left: -1px;
+      color: $col_white;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@if $cardClass {
+  .bl_card {
+    @include card(56.25%);
+  }
+}
+
+/*----------------------------------------------------------------------------------------------------
+## table
+----------------------------------------------------------------------------------------------------*/
+@if $tableClass {
+  .bl_horizTable {
+    border: 1px solid $col_gray;
+    table {
+      width: 100%;
+    }
+    th {
+      width: 20%;
+      padding: 15px;
+      background-color: #ccc;
+      border-bottom: 1px solid $col_gray;
+      vertical-align: middle;
+    }
+    td {
+      padding: 15px;
+      border-bottom: 1px solid $col_gray;
+    }
+    tr:last-child {
+      th,
+      td {
+        border-bottom-width: 0;
+      }
+    }
+    &_scroll {
+      border-right-width: 0;
+      overflow-x: auto;
+      th,
+      td {
+        white-space: nowrap;
+        @include mq(md) {
+          white-space: inherit;
+        }
+      }
+      td {
+        border-right: 1px solid $col_gray;
+      }
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------------------------
+## FAQ
+----------------------------------------------------------------------------------------------------*/
+@if $faqClass {
+  .bl_faq {
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+    &_q,
+    &_a {
+      position: relative;
+      box-sizing: content-box;
+      min-height: 45px;
+      padding-left: 60px;
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        color: $col_white;
+        line-height: 35px;
+        text-align: center;
+        letter-spacing: 0;
+      }
+    }
+    &_q {
+      margin-bottom: 15px;
+      &_ttl {
+        padding-top: 10px;
+      }
+      &::before {
+        content: "Q";
+        background-color: blue;
+      }
+    }
+    &_a {
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid $col_gray;
+      &_body {
+        margin-top: 15px;
+        & > *:last-child {
+          margin-bottom: 0;
+        }
+      }
+      &_ttl {
+        margin-bottom: 20px;
+        padding-top: 10px;
+      }
+      &::before {
+        content: "A";
+        background-color: red;
+      }
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------------------------
+## accordion
+----------------------------------------------------------------------------------------------------*/
+@if $accordionClass {
+  .bl_accordion {
+    & + dt {
+      margin-top: 20px;
+    }
+    dt {
+      margin-top: 10px;
+    }
+    &_btn {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      padding: 1em 40px 1em 15px;
+      border: 1px solid transparent;
+      background-color: $col_gray;
+      cursor: pointer;
+      transition: 0.3s;
+      &::before,
+      &::after {
+        @include p_abs();
+        @include p_y_center();
+        display: block;
+        background-color: currentColor;
+      }
+      &::before {
+        right: 15px;
+        width: 20px;
+        height: 2px;
+      }
+      &::after {
+        right: 24px;
+        width: 2px;
+        height: 20px;
+      }
+      &:focus,
+      &:hover {
+        background-color: $col_white;
+        border-color: currentColor;
+      }
+      &.is_active {
+        border-radius: 5px 5px 0 0;
+        &::after {
+          content: none;
+        }
+      }
+    }
+    &_body {
+      display: none;
+      padding: 15px;
+      border: 1px solid $col_black;
+      border-radius: 0 0 5px 5px;
+      transform: translateY(-5px);
+      & > *:last-child {
+        margin-bottom: 0;
+      }
+      &.is_active {
+        display: block;
+      }
+    }
+    &_txt {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------------------------
+## breadcrump
+----------------------------------------------------------------------------------------------------*/
+@if $breadcrumpClass {
+  .breadcrumb {
+    display: flex;
+    justify-content: flex-end;
+    li::after {
+      content: "/";
+      align-items: center;
+      margin: 0 10px;
+      a {
+        display: flex;
+        align-items: center;
+      }
+    }
+    li:last-child::after {
+      content: "";
+      margin: 0;
+    }
+  }
+}
+
+@if $step_contentsClass {
+  .step_contents {
+    li {
+      position: relative;
+      dl {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      big {
+        font-size: 36px;
+        margin-right: 20px;
+      }
+      h3 {
+        font-weight: bold;
+      }
+      dt {
+        background-color: #fff;
+        padding: 20px;
+        border: 3px solid $col_gray;
+        border-radius: 10px;
+        font-weight: normal;
+        font-size: 16px;
+        a {
+          text-decoration: underline;
+          color: $col_gray;
+        }
+      }
+    }
+    li:nth-child(n + 2) {
+      margin-top: 50px;
+    }
+    li::after {
+      position: absolute;
+      top: 100%;
+      left: 45%;
+      content: "↓";
+      font-size: 40px;
+      color: $col_gray;
+    }
+    li:last-child::after {
+      content: "";
+    }
+  }
+
+  @include mq(md) {
+    .step_contents {
+      li {
+        big {
+          margin-right: 20px;
+          font-size: 48px;
+        }
+        dl {
+          flex-direction: row;
+        }
+        dt {
+          padding: 30px;
+        }
+      }
+      li:nth-child(n + 2) {
+        margin-top: 80px;
+      }
+      li::after {
+        top: 105%;
+        font-size: 50px;
+      }
+    }
+  }
+}
+
+@if $dl_tableClass {
+  .dl_table {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    dt {
+      vertical-align: top;
+      padding: 15px 0;
+      color: $col_black;
+      font-weight: bold;
+    }
+    dd {
+      vertical-align: top;
+      padding: 15px 0;
+      border-bottom: 1px solid $col_gray;
+    }
+  }
+  @include mq(md) {
+    .dl_table {
+      flex-direction: row;
+      dt {
+        width: 25%;
+        padding: 20px 0;
+        border-bottom: 1px solid $col_gray;
+      }
+      dd {
+        width: 75%;
+        padding: 20px 0;
+      }
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------------------------
+## pagination
+<ol class="bl_pagination">
+  <li>
+    <a class="bl_pagination_prevNext" href="#">前へ</a>
+  </li>
+  <li>
+    <a class="bl_pagination_num" href="#">1</a>
+  </li>
+  <li>
+    <a class="bl_pagination_num is_active" href="#">2</a>
+  </li>
+  <li>
+    <a class="bl_pagination_num" href="#">3</a>
+  </li>
+  <li>
+    <a class="bl_pagination_num" href="#">4</a>
+  </li>
+  <li>
+    <a class="bl_pagination_num" href="#">5</a>
+  </li>
+  <li>
+    <a class="bl_pagination_prevNext" href="#">次へ</a>
+  </li>
+</ol>
+----------------------------------------------------------------------------------------------------*/
+@mixin pagination($color, $height, $font_size) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: $font_size;
+  %paginationBtn {
+    display: inline-flex;
+    height: $height;
+    border-radius: $height/2;
+    border: 1px solid $color;
+    align-items: center;
+    justify-content: center;
+  }
+  &_prevNext {
+    @extend %paginationBtn;
+    width: 70px;
+    @include link_color($color, $col_white);
+  }
+  &_num {
+    @extend %paginationBtn;
+    width: $height;
+    @include link_color($color, $col_white);
+  }
+  .is_active {
+    background-color: $color;
+    color: $col_white;
+    pointer-events: none;
+  }
+}
+@if $pagination {
+  .bl_pagination {
+    @include pagination($col_gray, 34px, 13px);
+  }
+}

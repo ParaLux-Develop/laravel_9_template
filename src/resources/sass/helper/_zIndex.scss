@@ -1,0 +1,13 @@
+@mixin z-index($key) {
+  z-index: map-get($layer, $key);
+}
+
+.z_modal {
+  @include z-index(modal);
+}
+.z_header {
+  @include z-index(header);
+}
+.z_tooltip {
+  @include z-index(tooltip);
+}

@@ -1,0 +1,44 @@
+@charset "UTF-8";
+/*
+Theme Name: paralux_sass
+Author: paralux
+Version: 1.0
+Text Domain: paralux
+*/
+
+@import "base/reset";
+@import "base/variable";
+@import "base/normalize";
+
+@import "helper/align";
+@import "helper/border";
+@import "helper/clamp";
+@import "helper/color";
+@import "helper/cursor";
+@import "helper/display";
+@import "helper/flex";
+@import "helper/font";
+@import "helper/grid";
+@import "helper/margin";
+@import "helper/position";
+@import "helper/sizing";
+@import "helper/zIndex";
+
+@import "module/element";
+@import "module/block";
+
+// @import "module/element/btn/btn_base";
+// @import "module/element/btn/el_btn";
+// @import "module/element/btn/el_btn";
+
+// @import "module/block/card/card_base";
+// @import "module/block/card/bl_card";
+// @import "module/block/card/bl_card_2";
+// @import "module/block/card/bl_card_3";
+
+@import "layout/column2";
+@import "layout/layout";
+@import "layout/header";
+@import "layout/footer";
+
+//@import "";

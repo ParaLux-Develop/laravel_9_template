@@ -1,0 +1,107 @@
+@charset "UTF-8";
+/*
+Theme Name: paralux_sass
+Author: paralux
+Version: 1.0
+Text Domain: paralux module-elment
+*/
+
+/*----------------------------------------------------------------------------------------------------
+## module_elment_flag
+----------------------------------------------------------------------------------------------------*/
+$btnClass: true !default;
+$tagClass: false !default;
+
+/*----------------------------------------------------------------------------------------------------
+## btn
+----------------------------------------------------------------------------------------------------*/
+@mixin link_color($text, $back) {
+  color: $text;
+  background-color: $back;
+  svg {
+    fill: $text;
+  }
+  &:hover {
+    color: $back;
+    background-color: $text;
+    border-color: currentColor;
+    svg {
+      fill: $back;
+    }
+  }
+}
+@if $btnClass {
+  .btn {
+    display: inline-block;
+    max-width: 100%;
+    padding: 0.6em 1em;
+    border: 1.5px solid transparent;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  @each $modifier, $color in $site_colors {
+    .el_btn_#{$modifier} {
+      @extend .btn;
+      @include link_color($col_white, $color);
+    }
+    .el_btn_#{$modifier}Rev {
+      @extend .btn;
+      @include link_color($color, $col_white);
+      border-color: currentColor;
+      &:hover {
+        border-color: $color;
+      }
+    }
+  }
+
+  .el_btn_icon,
+  .el_btn_iconRev {
+    position: relative;
+    svg {
+      @include p_abs();
+      @include p_y_center;
+      width: auto;
+      max-width: 1em;
+      height: 0.6em;
+    }
+  }
+  .el_btn_icon {
+    padding: 0.6em 1.6em 0.6em 1em;
+    svg {
+      right: 0.5em;
+    }
+  }
+  .el_btn_iconRev {
+    padding: 0.6em 1em 0.6em 1.6em;
+    svg {
+      left: 0.5em;
+    }
+  }
+}
+
+
+/*----------------------------------------------------------------------------------------------------
+## tag "#"
+----------------------------------------------------------------------------------------------------*/
+@if $tagClass {
+  ul.el_tag {
+    li {
+      position: relative;
+      display: inline-block;
+      padding: 0.1em 0.5em 0.1em 1.4em;
+      margin-top: 5px;
+	    border: 1px solid gray;
+      background-color: #fff;
+	    border-radius: 20px;
+      a{
+        &::before {
+          content: "#";
+          position: absolute;
+          top: 50%;
+          transform: translateX(-100%) translateY(-50%);
+        }
+      }
+    }
+  }
+}

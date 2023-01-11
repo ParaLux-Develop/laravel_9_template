@@ -1,0 +1,37 @@
+$gapEndValue: 20 !default;
+
+@each $modifier, $size in $grid-sizes {
+  .grid_cl_#{$modifier} {
+    grid-template-columns: repeat(auto-fill, minmax($size, 1fr));
+  }
+}
+
+@for $i from 0 through $gapEndValue {
+  .gap_#{$i*5} {
+    gap: 5px * $i;
+  }
+}
+
+@for $i from 0 through $gapEndValue {
+  .gapx_#{$i*5} {
+    column-gap: 5px * $i;
+  }
+}
+
+@for $i from 0 through $gapEndValue {
+  .gapy_#{$i*5} {
+    row-gap: 5px * $i;
+  }
+}
+
+@for $i from 0 through $gapEndValue {
+  @include mediaModifire(gap_#{$i * 5}) {
+    gap: 5px * $i;
+  }
+  @include mediaModifire(gapx_#{$i * 5}) {
+    column-gap: 5px * $i;
+  }
+  @include mediaModifire(gapy_#{$i * 5}) {
+    row-gap: 5px * $i;
+  }
+}

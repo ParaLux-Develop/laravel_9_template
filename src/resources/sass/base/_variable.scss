@@ -1,0 +1,86 @@
+// TODO for文,fill,bor,ダブル,flex
+/*
+* variable.scss
+*/
+
+/* -- font-size -- */
+$i: 10;
+$font_sizes: ();
+@while $i <= 36 {
+  $font_size: (
+    $i: $i + px,
+  );
+  $font_sizes: map-merge($font_sizes, $font_size);
+  $i: $i + 1;
+}
+
+/* -- font-family -- */
+$main_font: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+  "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif !default;
+// <head>内に<link href="https://fonts.googleapis.com/〜" rel="stylesheet">（使用するフォントライブラリ）追加
+
+/* -- color -- */
+$col_black: #777 !default;
+$col_gray: #aaa !default;
+$col_white: #fff !default;
+
+$site_colors: (
+  "black": $col_black,
+  "gray": $col_gray,
+  "white": $col_white,
+) !default;
+
+/* -- size --*/
+$page_width: 1200px !default;
+$page_max_width: unset !default;
+$page_padding: 30px !default;
+$page_padding_sp: 5% !default;
+
+$column2_main_width: 800px !default;
+$column2_side_width: 300px !default;
+
+/* -- grid_size -- */
+$grid-sizes: (
+  1: 100px,
+  2: 150px,
+  3: 200px,
+  4: 250px,
+  5: 300px,
+) !default;
+
+/* -- font-weigh -- */
+$font-weigh: (
+  "light": 200,
+  "semibold": 500,
+  "bold": 600,
+) !default;
+
+/* -- layer(z-index) -- */
+$layer: (
+  modal: 100,
+  header: 20,
+  tooltip: 10,
+  default: 1,
+) !default;
+
+/* -- media_query -- */
+$breakpoints: (
+  "sm": "screen and (min-width: 400px)",
+  "md": "screen and (min-width: 768px)",
+  "lg": "screen and (min-width: 1000px)",
+  "xl": "screen and (min-width: 1200px)",
+) !default;
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+/* -- media modifier -- */
+@mixin mediaModifire($className) {
+  @include mq(md) {
+    .#{$className}_pc {
+      @content;
+    }
+  }
+}

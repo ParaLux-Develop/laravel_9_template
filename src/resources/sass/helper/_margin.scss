@@ -1,0 +1,159 @@
+$spaceClass: true !default;
+
+$marginTop: true !default;
+$marginRight: true !default;
+$marginBottom: true !default;
+$marginLeft: true !default;
+$marginX: true !default;
+$marginY: true !default;
+$marginXY: true !default;
+
+$spacePadding: true !default;
+$paddingTop: true !default;
+$paddingRight: true !default;
+$paddingBottom: true !default;
+$paddingLeft: true !default;
+$paddingX: true !default;
+$paddingY: true !default;
+$paddingXY: true !default;
+
+$endValue: 50 !default;
+
+@if $spaceClass {
+  @media screen and (max-width: 768px) {
+    .px_5_per {
+      padding-right: $page_padding_sp;
+      padding-left: $page_padding_sp;
+    }
+  }
+
+  @for $i from 0 through $endValue {
+    @if $marginTop {
+      .mt_#{$i*5} {
+        margin-top: 5px * $i;
+      }
+      @media screen and (min-width: 769px) {
+        .mt_#{$i*5}_pc {
+          margin-top: 5px * $i;
+        }
+      }
+      // タブレット用
+      // @media screen and (min-width:768px) and (max-width: 1200px) {
+      //   .mt_#{$i*5}_md {
+      //     margin-top: 5px * $i;
+      //   }
+      // }
+      @media screen and (max-width: 768px) {
+        .mt_#{$i*5}_sp {
+          margin-top: 5px * $i;
+        }
+      }
+    }
+    @if $marginRight {
+      .mr_#{$i*5} {
+        margin-right: 5px * $i;
+      }
+    }
+    @if $marginBottom {
+      .mb_#{$i*5} {
+        margin-bottom: 5px * $i;
+      }
+    }
+    @if $marginLeft {
+      .ml_#{$i*5} {
+        margin-left: 5px * $i;
+      }
+    }
+    @if $marginX {
+      .mx_#{$i*5} {
+        margin-right: 5px * $i;
+        margin-left: 5px * $i;
+      }
+    }
+    @if $marginY {
+      .my_#{$i*5} {
+        margin-top: 5px * $i;
+        margin-bottom: 5px * $i;
+      }
+    }
+    @if $marginXY {
+      .mxy_#{$i*5} {
+        margin-top: 5px * $i;
+        margin-right: 5px * $i;
+        margin-bottom: 5px * $i;
+        margin-left: 5px * $i;
+      }
+    }
+
+    @if $spacePadding {
+      @if $paddingTop {
+
+        .pt_#{$i*5} {
+          padding-top: 5px * $i;
+        }
+        @media screen and (min-width: 1200px) {
+          .pt_#{$i*5}_pc {
+            padding-top: 5px * $i;
+          }
+        }
+        @media screen and (min-width:768px) and (max-width: 1200px) {
+          .pt_#{$i*5}_md {
+            padding-top: 5px * $i;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          .pt_#{$i*5}_sp {
+            padding-top: 5px * $i;
+          }
+        }
+      }
+      @if $paddingRight {
+        .pr_#{$i*5} {
+          padding-right: 5px * $i;
+        }
+      }
+      @if $paddingBottom {
+        .pb_#{$i*5} {
+          padding-bottom: 5px * $i;
+        }
+      }
+      @if $paddingLeft {
+        .pl_#{$i*5} {
+          padding-left: 5px * $i;
+        }
+      }
+      @if $paddingX {
+        .px_#{$i*5} {
+          padding-right: 5px * $i;
+          padding-left: 5px * $i;
+        }
+      }
+      @if $paddingY {
+        .py_#{$i*5} {
+          padding-top: 5px * $i;
+          padding-bottom: 5px * $i;
+        }
+      }
+      @if $paddingXY {
+        .pxy_#{$i*5} {
+          padding-top: 5px * $i;
+          padding-right: 5px * $i;
+          padding-bottom: 5px * $i;
+          padding-left: 5px * $i;
+        }
+      }
+    }
+  }
+
+  .mx_auto {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include mq(md) {
+    .mx_auto_pc {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+}

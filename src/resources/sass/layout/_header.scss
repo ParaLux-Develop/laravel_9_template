@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+/*----------------------------------------------------------------------------------------------------
+## header
+  <header class="site_header">
+    <div class="header_wrap d_flex al_center ju_between nav_drawer">
+      <h1><a href=""><img src="" alt=""></a></h1>
+      <input id="nav_input" type="checkbox" class="nav_unshown">
+      <label id="nav_open" for="nav_input"><span></span></label>
+      <nav class="nav_content">
+      <!-- navContent -->
+      </nav>
+    </div>
+  </header>
+----------------------------------------------------------------------------------------------------*/
+
+header.site_header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 0;
+  text-align: center;
+  @include z-index(header);
+
+  .header_wrap {
+    display: inline-flex;
+    display: -ms-inline-flexbox;
+    justify-content: space-between;
+    -ms-flex-pack: justify;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 20px 5%;
+    width: 100%;
+
+    img {
+      width: auto;
+      height: 40px;
+    }
+  }
+}
+
+@include mq() {
+  header.site_header {
+    .header_wrap {
+      padding: 15px 30px;
+      width: $page_width;
+
+      img {
+        height: 40px;
+      }
+
+      #nav_open {
+        display: none;
+      }
+      .nav_content {
+        overflow: visible;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        max-width: initial;
+        padding-top: 0;
+        background-color: transparent;
+        z-index: 0;
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// for sp
+#nav_drawer {
+  position: relative;
+}
+
+.nav_unshown {
+  display: none;
+}
+
+#nav_open {
+  display: inline-block;
+  width: 30px;
+  height: 22px;
+  vertical-align: middle;
+}
+
+#nav_open span,
+#nav_open span:before,
+#nav_open span:after {
+  position: absolute;
+  height: 3px;
+  width: 25px;
+  border-radius: 3px;
+  background: $col_black;
+  display: block;
+  transition: 0.3s ease-in-out;
+  content: "";
+  cursor: pointer;
+}
+#nav_open span {
+  margin-top: 8px;
+}
+#nav_open span:before {
+  bottom: -8px;
+}
+#nav_open span:after {
+  top: -8px;
+}
+
+.nav_content {
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 70px;
+  transition: 0.3s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  background-color: rgba($color: #000000, $alpha: 0.75);
+}
+
+#nav_input:checked ~ #nav_open {
+  span {
+    background-color: transparent;
+    &::before {
+      top: 0;
+      -webkit-transform: rotate3d(0, 0, 1, -45deg);
+      -ms-transform: rotate3d(0, 0, 1, -45deg);
+      transform: rotate3d(0, 0, 1, -45deg);
+    }
+    &::after {
+      top: 0;
+      -webkit-transform: rotate3d(0, 0, 1, 45deg);
+      -ms-transform: rotate3d(0, 0, 1, 45deg);
+      transform: rotate3d(0, 0, 1, 45deg);
+    }
+  }
+}
+
+#nav_input:checked ~ .nav_content {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*----------------------------------------------------------------------------------------------------
+## Navigation Menu
+----------------------------------------------------------------------------------------------------*/
+
+.menu_top_container {
+  display: inline-block;
+
+  ul.menu_top {
+    display: flex;
+    display: -ms-flexbox;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    li.menu_item {
+      position: relative;
+      width: 100%;
+      border-bottom: 1px solid #aaa;
+      font-size: 15px;
+      font-weight: 500;
+      color: $col_white;
+      letter-spacing: 0.3em;
+      text-align: center;
+      transition: 0.2s;
+      a {
+        display: inline-block;
+        padding: 20px 10px;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

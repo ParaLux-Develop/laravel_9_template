@@ -1,0 +1,46 @@
+$borderClass: true !default;
+$borderTop: false !default;
+$borderRight: false !default;
+$borderBottom: ture !default;
+$borderLeft: false !default;
+
+@if $borderClass {
+  @each $modifier, $color in $site_colors {
+    .bor_#{$modifier} {
+      border: 1px solid $color;
+    }
+    @if $borderTop {
+      .bor_top_#{$modifier} {
+        border-top: 1px solid $color;
+      }
+    }
+    @if $borderRight {
+      .bor_right_#{$modifier} {
+        border-right: 1px solid $color;
+      }
+    }
+    @if $borderBottom {
+      .bor_bottom_#{$modifier} {
+        border-bottom: 1px solid $color;
+      }
+    }
+    @if $borderLeft {
+      .bor_left_#{$modifier} {
+        border-left: 1px solid $color;
+      }
+    }
+  }
+  .bor_none {
+    border: none;
+  }
+}
+
+@for $i from 0 through 30 {
+  .bor_rad_#{$i} {
+    border-radius: $i * 1px;
+  }
+}
+
+.bor_rad_circle {
+  border-radius: 50%;
+}

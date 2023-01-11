@@ -1,0 +1,23 @@
+$clampEndValue: 5 !default;
+
+%clamp{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@for $i from 1 through $clampEndValue {
+  .clamp_#{$i} {
+    @extend %clamp;
+    -webkit-line-clamp: $i;
+  }
+}
+
+@for $i from 1 through $clampEndValue {
+  .clamp_#{$i}_pc {
+    @extend %clamp;
+    @include mq(md){
+      -webkit-line-clamp: $i;
+    }
+  }
+}
